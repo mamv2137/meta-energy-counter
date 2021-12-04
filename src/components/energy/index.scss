@@ -1,0 +1,17 @@
+.containerCountEnergy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .imageEnergy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./energy.svg");
+    background-size: contain;
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+  }
+}
