@@ -4,8 +4,6 @@ import { Box, Image, Text, Heading, Button, Stack } from "@chakra-ui/react";
 
 import "./index.scss";
 
-import LogoEnergy from "./energy.svg";
-
 export const Energy = () => {
   const [energy, setEnergy] = useState(3);
   const [round, setRound] = useState(1);
@@ -20,15 +18,23 @@ export const Energy = () => {
 
       case "next":
         if (energy === 9) {
-          return setEnergy(energy + 1);
+          setEnergy(energy + 1);
+          setRound(round + 1);
+          return;
         } else if (energy === 10) {
-          return setEnergy(10);
+          setEnergy(10);
+          setRound(round + 1);
+          return;
         } else {
-          return setEnergy(energy + 2);
+          setEnergy(energy + 2);
+          setRound(round + 1);
+          return;
         }
 
       case "new":
-        return setEnergy(3);
+        setEnergy(3);
+        setRound(1);
+        return;
 
       default:
         break;
@@ -37,7 +43,15 @@ export const Energy = () => {
 
   return (
     <Box className="containerCountEnergy">
-      <Heading color="white">Ronda:{round}</Heading>
+      <Heading size="md" color="white">
+        Contador de Energias Axie Infinity
+      </Heading>
+      <Text marginTop="5px" marginBottom="1.5rem" color="white">
+        Contador de energias, carta y slp
+      </Text>
+      <Heading size="lg" border="2px" p={2} borderRadius={10} color="white">
+        Ronda {round}
+      </Heading>
       <Box className="imageEnergy">
         <Heading size="xl">{energy}/10</Heading>
       </Box>
@@ -51,40 +65,61 @@ export const Energy = () => {
       >
         <Button
           onClick={() => onClick("less")}
+          w="7.5rem"
           border="2px"
-          borderColor="grey"
-          colorScheme="red"
+          borderColor="white"
+          color="white"
+          colorScheme="black"
         >
-          - Energia
+          - ENERGIA
         </Button>
         <Button
           onClick={() => onClick("more")}
+          w="7.5rem"
           border="2px"
-          borderColor="grey"
-          colorScheme="blue"
+          color="white"
+          colorScheme="black"
         >
-          + Energia
+          + ENERGIA
         </Button>
       </Stack>
       <Stack direction="row" spacing={4} align="center">
         <Button
           onClick={() => onClick("next")}
+          w="7.5rem"
           border="2px"
-          borderColor="grey"
-          colorScheme="yellow"
+          fontSize="13px"
+          borderColor="white"
+          variant="outline"
+          color="white"
+          colorScheme="black"
         >
-          Siguiente ronda
+          SIGUIENTE RONDA
         </Button>
         <Button
           onClick={() => onClick("rest")}
+          w="7.5rem"
           border="2px"
-          borderColor="grey"
+          borderColor="white"
           variant="outline"
-          colorScheme="blue"
+          color="#fff"
+          colorScheme="black"
         >
-          Reset
+          RESET
         </Button>
       </Stack>
+      <Button
+        onClick={() => onClick("new")}
+        w="16rem"
+        marginTop={2}
+        border="2px"
+        borderColor="white"
+        variant="outline"
+        colorScheme="black"
+        color="white"
+      >
+        NUEVA PARTIDA
+      </Button>
     </Box>
   );
 };

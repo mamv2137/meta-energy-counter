@@ -5,7 +5,7 @@ import { Energy } from "./components/energy";
 function App() {
   return (
     <ChakraProvider>
-      <Box h="100vh" backgroundColor="rgb(74, 67, 87)">
+      <Box h="100vh" backgroundColor="#0D151E">
         <Energy />
       </Box>
     </ChakraProvider>
