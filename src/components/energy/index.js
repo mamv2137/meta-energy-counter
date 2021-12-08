@@ -4,43 +4,7 @@ import { Box, Image, Text, Heading, Button, Stack } from "@chakra-ui/react";
 
 import "./index.scss";
 
-export const Energy = () => {
-  const [energy, setEnergy] = useState(3);
-  const [round, setRound] = useState(1);
-
-  const onClick = (action) => {
-    switch (action) {
-      case "less":
-        return setEnergy(energy > 1 ? energy - 1 : 0);
-
-      case "more":
-        return setEnergy(energy < 10 ? energy + 1 : 10);
-
-      case "next":
-        if (energy === 9) {
-          setEnergy(energy + 1);
-          setRound(round + 1);
-          return;
-        } else if (energy === 10) {
-          setEnergy(10);
-          setRound(round + 1);
-          return;
-        } else {
-          setEnergy(energy + 2);
-          setRound(round + 1);
-          return;
-        }
-
-      case "new":
-        setEnergy(3);
-        setRound(1);
-        return;
-
-      default:
-        break;
-    }
-  };
-
+export const Energy = ({ energy, setEnergy, round, setRound, onClick }) => {
   return (
     <Box className="containerCountEnergy">
       <Heading size="md" color="white">
@@ -49,7 +13,15 @@ export const Energy = () => {
       <Text marginTop="5px" marginBottom="1.5rem" color="white">
         Contador de energias, carta y slp
       </Text>
-      <Heading size="lg" border="2px" p={2} borderRadius={10} color="white">
+      <Heading
+        textAlign="center"
+        w="10rem"
+        size="lg"
+        border="2px"
+        p={2}
+        borderRadius={10}
+        color="white"
+      >
         Ronda {round}
       </Heading>
       <Box className="imageEnergy">

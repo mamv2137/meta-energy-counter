@@ -1,0 +1,21 @@
+.container_main {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  overflow-y: auto;
+  height: 100vh;
+  width: 100vw;
+
+  .container_sideleft {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 649px) {
+  .container_main {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
