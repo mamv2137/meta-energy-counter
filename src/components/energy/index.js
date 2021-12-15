@@ -1,10 +1,8 @@
-import { useState } from "react";
-
-import { Box, Image, Text, Heading, Button, Stack } from "@chakra-ui/react";
+import { Box, Text, Heading, Button, Stack } from "@chakra-ui/react";
 
 import "./index.scss";
 
-export const Energy = ({ energy, setEnergy, round, setRound, onClick }) => {
+export const Energy = ({ energy, round, onClick }) => {
   return (
     <Box className="containerCountEnergy">
       <Heading size="md" color="white">

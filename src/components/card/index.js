@@ -1,14 +1,4 @@
-import {
-  Box,
-  Image,
-  Text,
-  Heading,
-  Button,
-  Stack,
-  Divider,
-} from "@chakra-ui/react";
-
-import { useState } from "react";
+import { Box, Heading, Button, Stack, Divider } from "@chakra-ui/react";
 
 import "./index.scss";
 
