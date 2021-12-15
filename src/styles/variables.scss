@@ -1,0 +1,9 @@
+$dark: #0d151e;
+$white: #fff;
+
+@mixin titlesSideLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+}

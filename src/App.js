@@ -1,5 +1,5 @@
-import { Box, ChakraProvider } from '@chakra-ui/react';
-import { useState } from 'react';
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import { useState } from "react";
 
 import {
   energyMaxInCounter,
@@ -10,12 +10,13 @@ import {
   cardsInitial,
   cardsUsedInitial,
   cardsWonInitial,
-} from './utils';
+} from "./utils";
 
-import './App.scss';
-import { Cards } from './components/card';
-import { Energy } from './components/energy';
-import { Plays } from './components/wld';
+import "./App.scss";
+import { Cards } from "./components/card";
+import { Energy } from "./components/energy";
+import { Plays } from "./components/wld";
+import { SlpCounter } from "./components/slp";
 
 function App() {
   //states of energy
@@ -38,8 +39,8 @@ function App() {
   const subtractionOneCardWon = () => setWinCard(winCard - 1);
   const sumOneCardWon = () => setWinCard(winCard + 1);
 
-  const subtractionOneEnergy = energy - 1;
-  const sumOneEnergy = energy + 1;
+  const subtractionOneEnergy = () => setEnergy(energy - 1);
+  const sumOneEnergy = () => setEnergy(energy + 1);
 
   const subtractionCurrentCardAndCardUse = card - cardUse;
   const sumCardsToNextRound = cardsToSumInNextRound + winCard;
@@ -49,7 +50,7 @@ function App() {
 
   const isCardUseHigherToZero = cardUse > 0;
   const isCardWonHigherToZero = winCard > 0;
-  const isEnergyCurrentHigherToZero = energy > 1;
+  const isEnergyCurrentHigherToZero = energy > 0;
   const isEnergyCurrentMinorToMaxEnergy = energy < energyMaxInCounter;
 
   const isCurrentCardLessUsedMinorToOne = subtractionCurrentCardAndCardUse < 1;
@@ -61,15 +62,15 @@ function App() {
 
   const cardsWinsConditional = isCardWonHigherToZero
     ? subtractionOneCardWon
-    : 0;
+    : false;
 
   const energiesLessConditional = isEnergyCurrentHigherToZero
     ? subtractionOneEnergy
-    : 0;
+    : false;
 
   const energiesSumConditional = isEnergyCurrentMinorToMaxEnergy
     ? sumOneEnergy
-    : energyMaxInCounter;
+    : false;
 
   // const firstCaseNextRoundConditional = isCurrentCardLessUsedMinorToOne
   //   ? sumCardsToNextRound
@@ -135,59 +136,20 @@ function App() {
     if (!!actionToRun) actionToRun();
   };
 
-  //function to card and energy
-  const onClick = (action) => {
-    switch (action) {
-      case 'drawCard':
-        return setCardUse(conditionals.drawCard);
-
-      case 'lessCard':
-        return setCardUse(conditionals.lessCard);
-
-      case 'win':
-        return setWinCard(conditionals.winCard);
-
-      case 'lessWinCard':
-        return setWinCard(conditionals.lessWinCard);
-
-      case 'less':
-        return setEnergy(conditionals.lessEnergy);
-
-      case 'more':
-        return setEnergy(conditionals.moreEnergy);
-
-      case 'next':
-
-      case 'new':
-        return;
-
-      default:
-        break;
-    }
-  };
-
   return (
     <ChakraProvider>
-      <Box className="container_main" backgroundColor="#0D151E">
-        <Energy
-          energy={energy}
-          setEnergy={setEnergy}
-          round={round}
-          setRound={setRound}
-          onClick={onClick}
-        />
+      <Box className="container_main">
+        <Energy energy={energy} round={round} onClick={onClick} />
         <Box className="container_sideleft">
           <Cards
             card={card}
-            setCard={setCard}
             cardUse={cardUse}
-            setCardUse={setCardUse}
             winCard={winCard}
-            setWinCard={setWinCard}
             onClick={onClick}
           />
 
           <Plays />
+          <SlpCounter />
         </Box>
       </Box>
     </ChakraProvider>

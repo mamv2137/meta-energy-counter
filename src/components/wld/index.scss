@@ -1,6 +1,5 @@
+@import "../../styles/variables.scss";
+
 .containerCountPlay {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 1.5rem;
+  @include titlesSideLeft;
 }
