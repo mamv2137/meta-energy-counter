@@ -1,5 +1,5 @@
-import { Box, ChakraProvider } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, ChakraProvider } from '@chakra-ui/react';
+import { useState } from 'react';
 
 import {
   energyMaxInCounter,
@@ -10,12 +10,12 @@ import {
   cardsInitial,
   cardsUsedInitial,
   cardsWonInitial,
-} from "./utils";
+} from './utils';
 
-import "./App.scss";
-import { Cards } from "./components/card";
-import { Energy } from "./components/energy";
-import { Plays } from "./components/wld";
+import './App.scss';
+import { Cards } from './components/card';
+import { Energy } from './components/energy';
+import { Plays } from './components/wld';
 
 function App() {
   //states of energy
@@ -32,11 +32,11 @@ function App() {
   const [winCard, setWinCard] = useState(cardsWonInitial);
 
   //consts to the conditionals
-  const sumOneCardUsed = cardUse + 1;
-  const subtractionOneCard = cardUse - 1;
+  const sumOneCardUsed = () => setCardUse(cardUse + 1);
+  const subtractionOneCard = () => setCardUse(cardUse - 1);
 
-  const subtractionOneCardWon = winCard - 1;
-  const sumOneCardWon = winCard + 1;
+  const subtractionOneCardWon = () => setWinCard(winCard - 1);
+  const sumOneCardWon = () => setWinCard(winCard + 1);
 
   const subtractionOneEnergy = energy - 1;
   const sumOneEnergy = energy + 1;
@@ -75,11 +75,46 @@ function App() {
   //   ? sumCardsToNextRound
   //   : isSumTotalCardsMinorToCardMaxInHand;
 
-  const nextRoundConditional = isCurrentCardLessUsedMinorToOne
-    ? sumCardsToNextRound
-    : isSumTotalCardsMinorToCardMaxInHand
-    ? sumTotalCardsInNextRound
-    : cardMaxInHand;
+  const getValuesToNextRound = () =>
+    isCurrentCardLessUsedMinorToOne
+      ? sumCardsToNextRound
+      : isSumTotalCardsMinorToCardMaxInHand
+      ? sumTotalCardsInNextRound
+      : cardMaxInHand;
+
+  const resetValues = () => {
+    setEnergy(energyInitial);
+    setRound(roundInitial);
+    setCard(cardsInitial);
+    setCardUse(cardsUsedInitial);
+    setWinCard(cardsWonInitial);
+  };
+
+  const setNextValues = () => {
+    const nextValues = getValuesToNextRound();
+    setCard(nextValues);
+    setCardUse(cardsUsedInitial);
+    setWinCard(cardsWonInitial);
+
+    const energies = {
+      9: () => {
+        setEnergy(energy + 1);
+        setRound(round + 1);
+      },
+      10: () => {
+        setEnergy(10);
+        setRound(round + 1);
+      },
+      default: () => {
+        setEnergy(energy + 2);
+        setRound(round + 1);
+      },
+    };
+
+    const runEnergyAction = energies[energy] || energies.default;
+
+    runEnergyAction();
+  };
 
   //object conditionals
   const conditionals = {
@@ -89,55 +124,41 @@ function App() {
     lessWinCard: cardsWinsConditional,
     lessEnergy: energiesLessConditional,
     moreEnergy: energiesSumConditional,
-    updateCards: nextRoundConditional,
+    updateCards: setNextValues,
+    new: resetValues,
+  };
+
+  const getAction = (action) => conditionals[action] || null;
+
+  const onClick = (action) => {
+    const actionToRun = getAction(action);
+    if (!!actionToRun) actionToRun();
   };
 
   //function to card and energy
   const onClick = (action) => {
     switch (action) {
-      case "drawCard":
+      case 'drawCard':
         return setCardUse(conditionals.drawCard);
 
-      case "lessCard":
+      case 'lessCard':
         return setCardUse(conditionals.lessCard);
 
-      case "win":
+      case 'win':
         return setWinCard(conditionals.winCard);
 
-      case "lessWinCard":
+      case 'lessWinCard':
         return setWinCard(conditionals.lessWinCard);
 
-      case "less":
+      case 'less':
         return setEnergy(conditionals.lessEnergy);
 
-      case "more":
+      case 'more':
         return setEnergy(conditionals.moreEnergy);
 
-      case "next":
-        setCard(conditionals.updateCards);
+      case 'next':
 
-        setCardUse(cardsUsedInitial);
-        setWinCard(cardsWonInitial);
-        if (energy === 9) {
-          setEnergy(energy + 1);
-          setRound(round + 1);
-          return;
-        } else if (energy === 10) {
-          setEnergy(10);
-          setRound(round + 1);
-          return;
-        } else {
-          setEnergy(energy + 2);
-          setRound(round + 1);
-          return;
-        }
-
-      case "new":
-        setEnergy(energyInitial);
-        setRound(roundInitial);
-        setCard(cardsInitial);
-        setCardUse(cardsUsedInitial);
-        setWinCard(cardsWonInitial);
+      case 'new':
         return;
 
       default:
