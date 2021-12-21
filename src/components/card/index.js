@@ -50,7 +50,7 @@ export const Cards = ({ card, cardUse, winCard, onClick }) => {
         align="center"
       >
         <Button
-          onClick={() => onClick("win")}
+          onClick={() => onClick("winCard")}
           w="7.5rem"
           border="2px"
           borderColor="white"

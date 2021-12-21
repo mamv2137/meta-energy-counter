@@ -1,15 +1,8 @@
-import {
-  Box,
-  Image,
-  Text,
-  Heading,
-  Button,
-  Stack,
-  Divider,
-} from "@chakra-ui/react";
+import { Box, Heading, Button, Stack, Divider } from "@chakra-ui/react";
 
 import { useState } from "react";
 
+import { getAction, addOneToState, subtractionCurrentState } from "../../utils";
 import "./index.scss";
 
 export const Plays = () => {
@@ -17,29 +10,19 @@ export const Plays = () => {
   const [less, setLess] = useState(0);
   const [draw, setDraw] = useState(0);
 
+  //object d
+  const dictionaryVictories = {
+    winPlay: () => addOneToState(setWin, win),
+    lessWin: () => subtractionCurrentState(setWin, win),
+    lessPlay: () => addOneToState(setLess, less),
+    lessLess: () => subtractionCurrentState(setLess, less),
+    drawPlay: () => addOneToState(setDraw, draw),
+    lessDraw: () => subtractionCurrentState(setDraw, draw),
+  };
+
   const onClick = (action) => {
-    switch (action) {
-      case "winPlay":
-        return setWin(win + 1);
-
-      case "lessWin":
-        return setWin(win > 0 ? win - 1 : 0);
-
-      case "lessPlay":
-        return setLess(less + 1);
-
-      case "lessLess":
-        return setLess(less > 0 ? less - 1 : 0);
-
-      case "drawPlay":
-        return setDraw(draw + 1);
-
-      case "lessDraw":
-        return setDraw(draw > 0 ? draw - 1 : 0);
-
-      default:
-        break;
-    }
+    const actionToRun = getAction(action, dictionaryVictories);
+    if (!!actionToRun) actionToRun();
   };
 
   return (

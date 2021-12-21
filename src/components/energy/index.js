@@ -1,6 +1,6 @@
-import { Box, Text, Heading, Button, Stack } from '@chakra-ui/react';
+import { Box, Text, Heading, Button, Stack } from "@chakra-ui/react";
 
-import './index.scss';
+import "./index.scss";
 
 export const Energy = ({ energy, round, onClick }) => {
   return (
@@ -20,10 +20,12 @@ export const Energy = ({ energy, round, onClick }) => {
         borderRadius={10}
         color="white"
       >
-        Ronda {round}
+        RONDA {round}
       </Heading>
       <Box className="imageEnergy">
-        <Heading size="xl">{energy}/10</Heading>
+        <Heading textShadow="1px 1px 4px black" color="white" size="xl">
+          {energy}/10
+        </Heading>
       </Box>
 
       <Stack
@@ -34,7 +36,7 @@ export const Energy = ({ energy, round, onClick }) => {
         align="center"
       >
         <Button
-          onClick={() => onClick('lessEnergy')}
+          onClick={() => onClick("lessEnergy")}
           w="7.5rem"
           border="2px"
           borderColor="white"
@@ -44,7 +46,7 @@ export const Energy = ({ energy, round, onClick }) => {
           - ENERGIA
         </Button>
         <Button
-          onClick={() => onClick('moreEnergy')}
+          onClick={() => onClick("moreEnergy")}
           w="7.5rem"
           border="2px"
           color="white"
@@ -55,7 +57,7 @@ export const Energy = ({ energy, round, onClick }) => {
       </Stack>
       <Stack direction="row" spacing={4} align="center">
         <Button
-          onClick={() => onClick('next')}
+          onClick={() => onClick("updateCards")}
           w="7.5rem"
           border="2px"
           fontSize="13px"
@@ -67,7 +69,7 @@ export const Energy = ({ energy, round, onClick }) => {
           SIGUIENTE RONDA
         </Button>
         <Button
-          onClick={() => onClick('rest')}
+          onClick={() => onClick("rest")}
           w="7.5rem"
           border="2px"
           borderColor="white"
@@ -79,7 +81,7 @@ export const Energy = ({ energy, round, onClick }) => {
         </Button>
       </Stack>
       <Button
-        onClick={() => onClick('new')}
+        onClick={() => onClick("new")}
         w="16rem"
         marginTop={2}
         border="2px"
