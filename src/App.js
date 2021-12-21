@@ -10,6 +10,7 @@ import {
   cardsInitial,
   cardsUsedInitial,
   cardsWonInitial,
+  getAction,
 } from "./utils";
 
 import "./App.scss";
@@ -33,11 +34,11 @@ function App() {
   const [winCard, setWinCard] = useState(cardsWonInitial);
 
   //consts to the conditionals
-  const sumOneCardUsed = () => setCardUse(cardUse + 1);
+  const addOneCardUsed = () => setCardUse(cardUse + 1);
   const subtractionOneCard = () => setCardUse(cardUse - 1);
 
   const subtractionOneCardWon = () => setWinCard(winCard - 1);
-  const sumOneCardWon = () => setWinCard(winCard + 1);
+  const addOneCardWon = () => setWinCard(winCard + 1);
 
   const subtractionOneEnergy = () => setEnergy(energy - 1);
   const sumOneEnergy = () => setEnergy(energy + 1);
@@ -118,10 +119,10 @@ function App() {
   };
 
   //object conditionals
-  const conditionals = {
-    drawCard: sumOneCardUsed,
+  const objectDictionary = {
+    drawCard: addOneCardUsed,
     lessCard: cardsUsesConditional,
-    winCard: sumOneCardWon,
+    winCard: addOneCardWon,
     lessWinCard: cardsWinsConditional,
     lessEnergy: energiesLessConditional,
     moreEnergy: energiesSumConditional,
@@ -129,10 +130,8 @@ function App() {
     new: resetValues,
   };
 
-  const getAction = (action) => conditionals[action] || null;
-
   const onClick = (action) => {
-    const actionToRun = getAction(action);
+    const actionToRun = getAction(action, objectDictionary);
     if (!!actionToRun) actionToRun();
   };
 
