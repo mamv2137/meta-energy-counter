@@ -1,0 +1,12 @@
+.cotainer_networks {
+  display: flex;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  position: absolute;
+
+  .discord,
+  .instagram {
+    width: 3rem;
+    margin: 0.7rem;
+  }
+}

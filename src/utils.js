@@ -3,6 +3,18 @@ export const energyMaxInCounter = 10;
 export const cardsToSumInNextRound = 3;
 export const cardMaxInHand = 12;
 
+//const numbers
+export const one = 1;
+export const two = 2;
+export const tree = 3;
+export const four = 4;
+export const five = 5;
+export const six = 6;
+export const seven = 7;
+export const eigth = 8;
+export const nine = 9;
+export const ten = 10;
+
 //consts initials valors to counter
 export const energyInitial = 3;
 export const roundInitial = 1;

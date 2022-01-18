@@ -6,13 +6,12 @@
   justify-content: flex-end;
   overflow-y: auto;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-color: $dark;
 
   .container_sideleft {
     display: flex;
     flex-direction: column;
-    margin-left: 1rem;
   }
 }
 
@@ -20,5 +19,11 @@
   .container_main {
     flex-direction: column;
     justify-content: flex-start;
+  }
+}
+
+@media (min-width: 649px) {
+  .container_sideleft {
+    margin: 3.6rem 0 0 1rem;
   }
 }

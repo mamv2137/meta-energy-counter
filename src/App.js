@@ -18,6 +18,7 @@ import { Cards } from "./components/card";
 import { Energy } from "./components/energy";
 import { Plays } from "./components/wld";
 import { SlpCounter } from "./components/slp";
+import { Networks } from "./components/networks";
 
 function App() {
   //states of energy
@@ -137,6 +138,7 @@ function App() {
 
   return (
     <ChakraProvider>
+      <Networks />
       <Box className="container_main">
         <Energy energy={energy} round={round} onClick={onClick} />
         <Box className="container_sideleft">

@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import {
   Box,
   Heading,
@@ -14,13 +15,34 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+
+import {
+  one,
+  two,
+  tree,
+  four,
+  five,
+  six,
+  seven,
+  eigth,
+  nine,
+  ten,
+} from "../../utils";
 
 import "./index.scss";
 import imageSlp from "./slp.png";
 
 export const SlpCounter = () => {
-  const [slp, setSlp] = useState(0);
+  const [slpTotal, setSlpTotal] = useState(0);
+
+  const [calculator, setCalculator] = useState(0);
+
+  const onClick = (e, value) => {
+    e.preventDefault();
+    typeof value === "number"
+      ? setCalculator(calculator + value)
+      : setCalculator(0);
+  };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -45,11 +67,11 @@ export const SlpCounter = () => {
           onClick={onOpen}
           backgroundSize="cover"
         >
-          <Heading size="lg">{slp}</Heading>
+          <Heading size="lg">{calculator}</Heading>
         </Button>
       </Box>
       <Modal
-        size="sm"
+        size="xs"
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
         isOpen={isOpen}
@@ -59,30 +81,121 @@ export const SlpCounter = () => {
         <ModalContent>
           <ModalHeader>Calculadora de slp</ModalHeader>
           <ModalCloseButton />
-          <ModalBody pb={6}>
-            <Box w="90%" display="flex" justifyContent="flex-end">
-              <Text>0</Text>
+          <ModalBody>
+            <Box display="flex" justifyContent="flex-end">
+              <Text>{calculator}</Text>
             </Box>
 
-            <Box className="numbersCalculator">
-              <Button>1</Button>
-              <Button>2</Button>
-              <Button>3</Button>
-              <Button>4</Button>
-              <Button>5</Button>
-              <Button>6</Button>
-              <Button>7</Button>
-              <Button>8</Button>
-              <Button>9</Button>
-              <Button>0</Button>
+            <Box
+              display="flex"
+              alignSelf="center"
+              justifyContent="flex-end"
+              flexWrap="wrap"
+            >
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, one)}
+                value={1}
+              >
+                +1
+              </Button>
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, two)}
+                value={2}
+              >
+                +2
+              </Button>
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, tree)}
+                value={3}
+              >
+                +3
+              </Button>
+              {/* <Button w="25%" h="4rem" value="+">
+                +
+              </Button> */}
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, four)}
+                value={4}
+              >
+                +4
+              </Button>
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, five)}
+                value={5}
+              >
+                +5
+              </Button>
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, six)}
+                value={6}
+              >
+                +6
+              </Button>
+              {/* <Button w="25%" h="4rem" value="-">
+                -
+              </Button> */}
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, seven)}
+                value={7}
+              >
+                +7
+              </Button>
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, eigth)}
+                value={8}
+              >
+                +8
+              </Button>
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, nine)}
+                value={9}
+              >
+                +9
+              </Button>
+              <Button
+                w="66%"
+                h="4rem"
+                onClick={(e) => onClick(e, ten)}
+                value="clear"
+              >
+                +10
+              </Button>
+              <Button
+                w="33%"
+                h="4rem"
+                onClick={(e) => onClick(e, "clean")}
+                value={10}
+              >
+                C
+              </Button>
+              {/* <Button w="25%" h="4rem" value="=">
+                =
+              </Button> */}
             </Box>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
-              Save
+            <Button colorScheme="blue" w="100%" onClick={onClose}>
+              Cerrar
             </Button>
-            <Button onClick={onClose}>Cerrar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

@@ -13,10 +13,10 @@ export const Energy = ({ energy, round, onClick }) => {
       </Text>
       <Heading
         textAlign="center"
-        w="10rem"
+        // w="11rem"
         size="lg"
         border="2px"
-        p={2}
+        p={3}
         borderRadius={10}
         color="white"
       >
