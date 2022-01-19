@@ -14,6 +14,10 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
+  InputGroup,
+  Input,
+  InputRightElement,
+  InputLeftElement,
 } from "@chakra-ui/react";
 
 import {
@@ -78,12 +82,24 @@ export const SlpCounter = () => {
         onClose={onClose}
       >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Calculadora de slp</ModalHeader>
-          <ModalCloseButton />
+        <ModalContent border="1px solid black" backgroundColor="#2b2b2b">
+          <ModalHeader color="white">Calculadora de slp</ModalHeader>
+          <ModalCloseButton color="white" />
           <ModalBody>
             <Box display="flex" justifyContent="flex-end">
-              <Text>{calculator}</Text>
+              <InputGroup>
+                <Input
+                  className="outputSlpCalculator"
+                  type="text"
+                  isReadOnly="true"
+                />
+                <InputLeftElement width="1.5rem">
+                  <Image src={imageSlp} alt="imagen de slp" />
+                </InputLeftElement>
+                <InputRightElement>
+                  <Text>{calculator}</Text>
+                </InputRightElement>
+              </InputGroup>
             </Box>
 
             <Box
@@ -93,24 +109,27 @@ export const SlpCounter = () => {
               flexWrap="wrap"
             >
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
+                mr="3%"
                 onClick={(e) => onClick(e, one)}
                 value={1}
               >
                 +1
               </Button>
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
+                mr="3%"
                 onClick={(e) => onClick(e, two)}
                 value={2}
               >
                 +2
               </Button>
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
+                mb=".3rem"
                 onClick={(e) => onClick(e, tree)}
                 value={3}
               >
@@ -120,24 +139,27 @@ export const SlpCounter = () => {
                 +
               </Button> */}
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
+                mr="3%"
                 onClick={(e) => onClick(e, four)}
                 value={4}
               >
                 +4
               </Button>
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
+                mr="3%"
                 onClick={(e) => onClick(e, five)}
                 value={5}
               >
                 +5
               </Button>
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
+                mb=".3rem"
                 onClick={(e) => onClick(e, six)}
                 value={6}
               >
@@ -147,42 +169,46 @@ export const SlpCounter = () => {
                 -
               </Button> */}
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
+                mr="3%"
                 onClick={(e) => onClick(e, seven)}
                 value={7}
               >
                 +7
               </Button>
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
+                mr="3%"
                 onClick={(e) => onClick(e, eigth)}
                 value={8}
               >
                 +8
               </Button>
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
+                mb=".3rem"
                 onClick={(e) => onClick(e, nine)}
                 value={9}
               >
                 +9
               </Button>
               <Button
-                w="66%"
-                h="4rem"
+                w="65%"
+                h="3.7rem"
+                mr="3%"
                 onClick={(e) => onClick(e, ten)}
-                value="clear"
+                value={10}
               >
                 +10
               </Button>
               <Button
-                w="33%"
-                h="4rem"
+                w="31%"
+                h="3.7rem"
                 onClick={(e) => onClick(e, "clean")}
-                value={10}
+                value="clear"
               >
                 C
               </Button>
@@ -193,7 +219,7 @@ export const SlpCounter = () => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" w="100%" onClick={onClose}>
+            <Button backgroundColor="#faa839" w="100%" onClick={onClose}>
               Cerrar
             </Button>
           </ModalFooter>

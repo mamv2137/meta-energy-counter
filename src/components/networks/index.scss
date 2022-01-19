@@ -1,12 +1,25 @@
+@import "../../styles/variables.scss";
+
 .cotainer_networks {
   display: flex;
   box-sizing: border-box;
-  margin-top: 1rem;
-  position: absolute;
+  padding-top: 1rem;
+  position: fixed;
 
   .discord,
   .instagram {
     width: 3rem;
     margin: 0.7rem;
+  }
+}
+
+@media (max-width: 649px) {
+  .cotainer_networks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    background-color: $dark;
+    z-index: 10;
   }
 }
