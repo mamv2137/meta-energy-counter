@@ -20,25 +20,10 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 
-import {
-  one,
-  two,
-  tree,
-  four,
-  five,
-  six,
-  seven,
-  eigth,
-  nine,
-  ten,
-} from "../../utils";
-
 import "./index.scss";
 import imageSlp from "./slp.png";
 
 export const SlpCounter = () => {
-  const [slpTotal, setSlpTotal] = useState(0);
-
   const [calculator, setCalculator] = useState(0);
 
   const onClick = (e, value) => {
@@ -112,7 +97,7 @@ export const SlpCounter = () => {
                 w="31%"
                 h="3.7rem"
                 mr="3%"
-                onClick={(e) => onClick(e, one)}
+                onClick={(e) => onClick(e, 1)}
                 value={1}
               >
                 +1
@@ -121,7 +106,7 @@ export const SlpCounter = () => {
                 w="31%"
                 h="3.7rem"
                 mr="3%"
-                onClick={(e) => onClick(e, two)}
+                onClick={(e) => onClick(e, 2)}
                 value={2}
               >
                 +2
@@ -130,7 +115,7 @@ export const SlpCounter = () => {
                 w="31%"
                 h="3.7rem"
                 mb=".3rem"
-                onClick={(e) => onClick(e, tree)}
+                onClick={(e) => onClick(e, 3)}
                 value={3}
               >
                 +3
@@ -142,7 +127,7 @@ export const SlpCounter = () => {
                 w="31%"
                 h="3.7rem"
                 mr="3%"
-                onClick={(e) => onClick(e, four)}
+                onClick={(e) => onClick(e, 4)}
                 value={4}
               >
                 +4
@@ -151,7 +136,7 @@ export const SlpCounter = () => {
                 w="31%"
                 h="3.7rem"
                 mr="3%"
-                onClick={(e) => onClick(e, five)}
+                onClick={(e) => onClick(e, 5)}
                 value={5}
               >
                 +5
@@ -160,7 +145,7 @@ export const SlpCounter = () => {
                 w="31%"
                 h="3.7rem"
                 mb=".3rem"
-                onClick={(e) => onClick(e, six)}
+                onClick={(e) => onClick(e, 6)}
                 value={6}
               >
                 +6
@@ -172,7 +157,7 @@ export const SlpCounter = () => {
                 w="31%"
                 h="3.7rem"
                 mr="3%"
-                onClick={(e) => onClick(e, seven)}
+                onClick={(e) => onClick(e, 7)}
                 value={7}
               >
                 +7
@@ -181,7 +166,7 @@ export const SlpCounter = () => {
                 w="31%"
                 h="3.7rem"
                 mr="3%"
-                onClick={(e) => onClick(e, eigth)}
+                onClick={(e) => onClick(e, 8)}
                 value={8}
               >
                 +8
@@ -190,7 +175,7 @@ export const SlpCounter = () => {
                 w="31%"
                 h="3.7rem"
                 mb=".3rem"
-                onClick={(e) => onClick(e, nine)}
+                onClick={(e) => onClick(e, 9)}
                 value={9}
               >
                 +9
@@ -199,7 +184,7 @@ export const SlpCounter = () => {
                 w="65%"
                 h="3.7rem"
                 mr="3%"
-                onClick={(e) => onClick(e, ten)}
+                onClick={(e) => onClick(e, 10)}
                 value={10}
               >
                 +10
