@@ -1,22 +1,26 @@
 @import "./styles/variables.scss";
 
 .container_main {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  overflow-y: auto;
-  height: 100vh;
-  width: 100%;
+  @include stylesMain;
   background-color: $dark;
+}
 
-  .container_sideleft {
-    display: flex;
-    flex-direction: column;
-  }
+.container_main_white {
+  @include stylesMain;
+  background-image: url("./assets/bgaxie.png");
+  background-size: cover;
+  opacity: 0.8;
+}
+
+.container_sideleft {
+  display: flex;
+  flex-direction: column;
+  padding-left: 3rem;
 }
 
 @media (max-width: 649px) {
-  .container_main {
+  .container_main,
+  .container_main_white {
     flex-direction: column;
     justify-content: flex-start;
   }

@@ -19,8 +19,12 @@ import { Energy } from "./components/energy";
 import { Plays } from "./components/wld";
 import { SlpCounter } from "./components/slp";
 import { Networks } from "./components/networks";
+import { SwitchTheme } from "./components/switchTheme";
 
 function App() {
+  //change theme dark to white to dark
+  const [toggleTheme, setToggleTheme] = useState(true);
+
   //states of energy
   const [energy, setEnergy] = useState(energyInitial);
   const [round, setRound] = useState(roundInitial);
@@ -135,13 +139,22 @@ function App() {
     const actionToRun = getAction(action, objectDictionary);
     if (!!actionToRun) actionToRun();
   };
-
+  console.log(toggleTheme);
   return (
     <ChakraProvider>
-      <Networks />
-      <Box className="container_main">
-        <Energy energy={energy} round={round} onClick={onClick} />
+      <Box className={toggleTheme ? "container_main" : "container_main_white"}>
+        <SwitchTheme
+          toggleTheme={toggleTheme}
+          setToggleTheme={setToggleTheme}
+        />
+        <Energy
+          toggleTheme={toggleTheme}
+          energy={energy}
+          round={round}
+          onClick={onClick}
+        />
         <Box className="container_sideleft">
+          <Networks toggleTheme={toggleTheme} />
           <Cards
             card={card}
             cardUse={cardUse}

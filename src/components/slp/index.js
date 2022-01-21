@@ -21,7 +21,7 @@ import {
 } from "@chakra-ui/react";
 
 import "./index.scss";
-import imageSlp from "./slp.png";
+import imageSlp from "../../assets/slp.png";
 
 export const SlpCounter = () => {
   const [calculator, setCalculator] = useState(0);
