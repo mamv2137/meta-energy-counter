@@ -1,0 +1,31 @@
+@import "../../styles/variables.scss";
+
+.cotainer_networks,
+.cotainer_networks_white {
+  display: flex;
+  position: absolute;
+  left: 1px;
+  top: 1rem;
+
+  .discord,
+  .instagram,
+  .twitch {
+    width: 3rem;
+    margin: 0.2rem;
+  }
+
+  .logoMeta {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 649px) {
+  .cotainer_networks {
+    @include stylesNetworks;
+    background-color: $dark;
+  }
+  .cotainer_networks_white {
+    @include stylesNetworks;
+    background-color: transparent;
+  }
+}

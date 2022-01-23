@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import {
   Box,
   Heading,
@@ -13,14 +14,24 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
+  InputGroup,
+  Input,
+  InputRightElement,
+  InputLeftElement,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
 
 import "./index.scss";
-import imageSlp from "./slp.png";
+import imageSlp from "../../assets/slp.png";
 
 export const SlpCounter = () => {
-  const [slp, setSlp] = useState(0);
+  const [calculator, setCalculator] = useState(0);
+
+  const onClick = (e, value) => {
+    e.preventDefault();
+    typeof value === "number"
+      ? setCalculator(calculator + value)
+      : setCalculator(0);
+  };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -45,44 +56,157 @@ export const SlpCounter = () => {
           onClick={onOpen}
           backgroundSize="cover"
         >
-          <Heading size="lg">{slp}</Heading>
+          <Heading size="lg">{calculator}</Heading>
         </Button>
       </Box>
       <Modal
-        size="sm"
+        size="xs"
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
       >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Calculadora de slp</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <Box w="90%" display="flex" justifyContent="flex-end">
-              <Text>0</Text>
+        <ModalContent border="1px solid black" backgroundColor="#2b2b2b">
+          <ModalHeader color="white">Calculadora de slp</ModalHeader>
+          <ModalCloseButton color="white" />
+          <ModalBody>
+            <Box display="flex" justifyContent="flex-end">
+              <InputGroup>
+                <Input
+                  className="outputSlpCalculator"
+                  type="text"
+                  isReadOnly="true"
+                />
+                <InputLeftElement width="1.5rem">
+                  <Image src={imageSlp} alt="imagen de slp" />
+                </InputLeftElement>
+                <InputRightElement>
+                  <Text>{calculator}</Text>
+                </InputRightElement>
+              </InputGroup>
             </Box>
 
-            <Box className="numbersCalculator">
-              <Button>1</Button>
-              <Button>2</Button>
-              <Button>3</Button>
-              <Button>4</Button>
-              <Button>5</Button>
-              <Button>6</Button>
-              <Button>7</Button>
-              <Button>8</Button>
-              <Button>9</Button>
-              <Button>0</Button>
+            <Box
+              display="flex"
+              alignSelf="center"
+              justifyContent="flex-end"
+              flexWrap="wrap"
+            >
+              <Button
+                w="31%"
+                h="3.7rem"
+                mr="3%"
+                onClick={(e) => onClick(e, 1)}
+                value={1}
+              >
+                +1
+              </Button>
+              <Button
+                w="31%"
+                h="3.7rem"
+                mr="3%"
+                onClick={(e) => onClick(e, 2)}
+                value={2}
+              >
+                +2
+              </Button>
+              <Button
+                w="31%"
+                h="3.7rem"
+                mb=".3rem"
+                onClick={(e) => onClick(e, 3)}
+                value={3}
+              >
+                +3
+              </Button>
+              {/* <Button w="25%" h="4rem" value="+">
+                +
+              </Button> */}
+              <Button
+                w="31%"
+                h="3.7rem"
+                mr="3%"
+                onClick={(e) => onClick(e, 4)}
+                value={4}
+              >
+                +4
+              </Button>
+              <Button
+                w="31%"
+                h="3.7rem"
+                mr="3%"
+                onClick={(e) => onClick(e, 5)}
+                value={5}
+              >
+                +5
+              </Button>
+              <Button
+                w="31%"
+                h="3.7rem"
+                mb=".3rem"
+                onClick={(e) => onClick(e, 6)}
+                value={6}
+              >
+                +6
+              </Button>
+              {/* <Button w="25%" h="4rem" value="-">
+                -
+              </Button> */}
+              <Button
+                w="31%"
+                h="3.7rem"
+                mr="3%"
+                onClick={(e) => onClick(e, 7)}
+                value={7}
+              >
+                +7
+              </Button>
+              <Button
+                w="31%"
+                h="3.7rem"
+                mr="3%"
+                onClick={(e) => onClick(e, 8)}
+                value={8}
+              >
+                +8
+              </Button>
+              <Button
+                w="31%"
+                h="3.7rem"
+                mb=".3rem"
+                onClick={(e) => onClick(e, 9)}
+                value={9}
+              >
+                +9
+              </Button>
+              <Button
+                w="65%"
+                h="3.7rem"
+                mr="3%"
+                onClick={(e) => onClick(e, 10)}
+                value={10}
+              >
+                +10
+              </Button>
+              <Button
+                w="31%"
+                h="3.7rem"
+                onClick={(e) => onClick(e, "clean")}
+                value="clear"
+              >
+                C
+              </Button>
+              {/* <Button w="25%" h="4rem" value="=">
+                =
+              </Button> */}
             </Box>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
-              Save
+            <Button backgroundColor="#faa839" w="100%" onClick={onClose}>
+              Cerrar
             </Button>
-            <Button onClick={onClose}>Cerrar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

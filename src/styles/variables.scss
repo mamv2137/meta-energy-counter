@@ -7,3 +7,20 @@ $white: #fff;
   align-items: center;
   padding-top: 1.5rem;
 }
+
+@mixin stylesMain {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  overflow-y: auto;
+  height: 100vh;
+  width: 100%;
+}
+
+@mixin stylesNetworks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // width: 96.5%;
+  z-index: 10;
+}
