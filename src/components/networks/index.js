@@ -1,8 +1,16 @@
-import { Box, Icon, Image } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 import imageDiscord from "../../assets/discord.png";
 import imageInstagram from "../../assets/instagram.png";
+import imageTwitch from "../../assets/twitch.png";
+
+import imageDiscordBlack from "../../assets/discordNegro.png";
+import imageInstagramBlack from "../../assets/instagramNegro.png";
+import imageTwitchNegro from "../../assets/twitchNegro.png";
+
 import imageLogo from "../../assets/LogoMeta.png";
+import imageLogoBlack from "../../assets/LogoMetaNegro.png";
+
 import "./index.scss";
 
 export const Networks = ({ toggleTheme }) => {
@@ -10,12 +18,14 @@ export const Networks = ({ toggleTheme }) => {
     <Box
       className={toggleTheme ? "cotainer_networks" : "cotainer_networks_white"}
     >
-      <img src={imageLogo} />
+      <img
+        src={toggleTheme ? imageLogo : imageLogoBlack}
+        className="logoMeta"
+      />
       <a href="https://discord.gg/d3As6JQfc5" target="_blank">
         <img
           className="discord"
-          style={toggleTheme ? null : { backgroundColor: "gray" }}
-          src={imageDiscord}
+          src={toggleTheme ? imageDiscord : imageDiscordBlack}
         />
       </a>
       <a
@@ -24,8 +34,13 @@ export const Networks = ({ toggleTheme }) => {
       >
         <img
           className="instagram"
-          style={toggleTheme ? null : { backgroundColor: "gray" }}
-          src={imageInstagram}
+          src={toggleTheme ? imageInstagram : imageInstagramBlack}
+        />
+      </a>
+      <a href="https://www.twitch.tv/metacademy_" target="_blank">
+        <img
+          className="twitch"
+          src={toggleTheme ? imageTwitch : imageTwitchNegro}
         />
       </a>
     </Box>

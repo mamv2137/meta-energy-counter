@@ -8,10 +8,14 @@
   top: 1rem;
 
   .discord,
-  .instagram {
+  .instagram,
+  .twitch {
     width: 3rem;
-    margin: 0.7rem;
-    border-radius: 30%;
+    margin: 0.2rem;
+  }
+
+  .logoMeta {
+    width: 20rem;
   }
 }
 

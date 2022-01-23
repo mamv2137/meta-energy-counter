@@ -2,14 +2,24 @@ import { Box, Text, Heading, Button, Stack } from "@chakra-ui/react";
 
 import "./index.scss";
 
-export const Energy = ({ energy, round, onClick }) => {
+export const Energy = ({ energy, round, onClick, toggleTheme }) => {
+  //conditional to change color words
+  const conditionalColor = (colorDark, colorWhite) => {
+    return toggleTheme ? colorDark : colorWhite;
+  };
+
   return (
     <Box className="containerCountEnergy">
-      <Heading size="md" color="white">
+      <Heading size="md" color={() => conditionalColor("white", "black")}>
         Contador de Energias Axie Infinity
       </Heading>
-      <Text marginTop="5px" marginBottom="1.5rem" color="white">
-        Contador de energias, carta y slp
+      <Text
+        opacity="1.3"
+        marginTop="5px"
+        marginBottom="1.5rem"
+        color={() => conditionalColor("white", "black")}
+      >
+        Contador de energias, cartas y slp
       </Text>
       <Heading
         textAlign="center"
@@ -18,7 +28,7 @@ export const Energy = ({ energy, round, onClick }) => {
         border="2px"
         p={3}
         borderRadius={10}
-        color="white"
+        color={() => conditionalColor("white", "black")}
       >
         RONDA {round}
       </Heading>
@@ -39,9 +49,8 @@ export const Energy = ({ energy, round, onClick }) => {
           onClick={() => onClick("lessEnergy")}
           w="7.5rem"
           border="2px"
-          borderColor="white"
-          color="white"
-          colorScheme="black"
+          color={() => conditionalColor("white", "black")}
+          colorScheme={conditionalColor("transparent", "red")}
         >
           - ENERGIA
         </Button>
@@ -49,8 +58,8 @@ export const Energy = ({ energy, round, onClick }) => {
           onClick={() => onClick("moreEnergy")}
           w="7.5rem"
           border="2px"
-          color="white"
-          colorScheme="black"
+          color={() => conditionalColor("white", "black")}
+          colorScheme={conditionalColor("transparent", "green")}
         >
           + ENERGIA
         </Button>
@@ -61,10 +70,8 @@ export const Energy = ({ energy, round, onClick }) => {
           w="7.5rem"
           border="2px"
           fontSize="13px"
-          borderColor="white"
-          variant="outline"
-          color="white"
-          colorScheme="black"
+          color={() => conditionalColor("white", "black")}
+          colorScheme={conditionalColor("transparet", "yellow")}
         >
           SIGUIENTE RONDA
         </Button>
@@ -72,10 +79,8 @@ export const Energy = ({ energy, round, onClick }) => {
           onClick={() => onClick("rest")}
           w="7.5rem"
           border="2px"
-          borderColor="white"
-          variant="outline"
-          color="#fff"
-          colorScheme="black"
+          color={() => conditionalColor("white", "black")}
+          colorScheme={conditionalColor("black", "orange")}
         >
           RESET
         </Button>
@@ -85,10 +90,8 @@ export const Energy = ({ energy, round, onClick }) => {
         w="16rem"
         marginTop={2}
         border="2px"
-        borderColor="white"
-        variant="outline"
-        colorScheme="black"
-        color="white"
+        color={() => conditionalColor("white", "black")}
+        colorScheme={conditionalColor("transparent", "blackAlpha")}
       >
         NUEVA PARTIDA
       </Button>
