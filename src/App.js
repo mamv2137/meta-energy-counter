@@ -21,6 +21,18 @@ import { SlpCounter } from "./components/slp";
 import { Networks } from "./components/networks";
 import { SwitchTheme } from "./components/switchTheme";
 
+import { extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  colors: {
+    brand: {
+      100: "#f7fafc",
+      // ...
+      900: "#1a202c",
+    },
+  },
+});
+
 function App() {
   //change theme dark to white to dark
   const [toggleTheme, setToggleTheme] = useState(true);
@@ -28,6 +40,11 @@ function App() {
   //states of energy
   const [energy, setEnergy] = useState(energyInitial);
   const [round, setRound] = useState(roundInitial);
+
+  //conditional to change color words
+  const conditionalColor = (colorDark, colorWhite) => {
+    return toggleTheme ? colorDark : colorWhite;
+  };
 
   //**states cards
   const [card, setCard] = useState(cardsInitial);
@@ -139,16 +156,15 @@ function App() {
     const actionToRun = getAction(action, objectDictionary);
     if (!!actionToRun) actionToRun();
   };
-  console.log(toggleTheme);
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Box className={toggleTheme ? "container_main" : "container_main_white"}>
         <SwitchTheme
           toggleTheme={toggleTheme}
           setToggleTheme={setToggleTheme}
         />
         <Energy
-          toggleTheme={toggleTheme}
+          conditionalColor={conditionalColor}
           energy={energy}
           round={round}
           onClick={onClick}
@@ -156,14 +172,15 @@ function App() {
         <Box className="container_sideleft">
           <Networks toggleTheme={toggleTheme} />
           <Cards
+            conditionalColor={conditionalColor}
             card={card}
             cardUse={cardUse}
             winCard={winCard}
             onClick={onClick}
           />
 
-          <Plays />
-          <SlpCounter />
+          <Plays conditionalColor={conditionalColor} />
+          <SlpCounter conditionalColor={conditionalColor} />
         </Box>
       </Box>
     </ChakraProvider>

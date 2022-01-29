@@ -3,10 +3,6 @@
 .containerSlpCounter {
   @include titlesSideLeft;
 
-  .titleSlpCounter {
-    color: #fff;
-  }
-
   .containerImageAndCounter {
     display: flex;
     justify-content: space-evenly;

@@ -23,7 +23,7 @@ import {
 import "./index.scss";
 import imageSlp from "../../assets/slp.png";
 
-export const SlpCounter = () => {
+export const SlpCounter = ({ conditionalColor }) => {
   const [calculator, setCalculator] = useState(0);
 
   const onClick = (e, value) => {
@@ -40,7 +40,11 @@ export const SlpCounter = () => {
 
   return (
     <Box className="containerSlpCounter">
-      <Heading className="titleSlpCounter" size="md">
+      <Heading
+        className="titleSlpCounter"
+        color={() => conditionalColor("white", "black")}
+        size="md"
+      >
         CONTADOR DE SLP
       </Heading>
       <Box className="containerImageAndCounter">
@@ -50,9 +54,9 @@ export const SlpCounter = () => {
           padding={0}
           w="5rem"
           border="2px"
-          borderColor="white"
+          borderColor={() => conditionalColor("white", "black")}
           color="white"
-          colorScheme="black"
+          colorScheme={conditionalColor("transparent", "blackAlpha")}
           onClick={onOpen}
           backgroundSize="cover"
         >

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { getAction, addOneToState, subtractionCurrentState } from "../../utils";
 import "./index.scss";
 
-export const Plays = () => {
+export const Plays = ({ conditionalColor }) => {
   const [win, setWin] = useState(0);
   const [less, setLess] = useState(0);
   const [draw, setDraw] = useState(0);
@@ -27,7 +27,7 @@ export const Plays = () => {
 
   return (
     <Box className="containerCountPlay">
-      <Heading size="md" color="white">
+      <Heading size="md" color={() => conditionalColor("white", "black")}>
         CONTADOR DE PARTIDAS
       </Heading>
 
@@ -42,9 +42,9 @@ export const Plays = () => {
           onClick={() => onClick("winPlay")}
           w="7.5rem"
           border="2px"
-          borderColor="white"
+          borderColor={() => conditionalColor("white", "black")}
           color="white"
-          colorScheme="black"
+          colorScheme={conditionalColor("transparent", "blackAlpha")}
         >
           GANADAS
         </Button>
@@ -52,8 +52,9 @@ export const Plays = () => {
           onClick={() => onClick("lessWin")}
           w="7.5rem"
           border="2px"
+          borderColor={() => conditionalColor("white", "black")}
           color="white"
-          colorScheme="black"
+          colorScheme={conditionalColor("transparent", "blackAlpha")}
         >
           {win}
         </Button>
@@ -70,9 +71,9 @@ export const Plays = () => {
           onClick={() => onClick("lessPlay")}
           w="7.5rem"
           border="2px"
-          borderColor="white"
+          borderColor={() => conditionalColor("white", "black")}
           color="white"
-          colorScheme="black"
+          colorScheme={conditionalColor("transparent", "blackAlpha")}
         >
           PERDIDAS
         </Button>
@@ -80,8 +81,9 @@ export const Plays = () => {
           onClick={() => onClick("lessLess")}
           w="7.5rem"
           border="2px"
+          borderColor={() => conditionalColor("white", "black")}
           color="white"
-          colorScheme="black"
+          colorScheme={conditionalColor("transparent", "blackAlpha")}
         >
           {less}
         </Button>
@@ -98,9 +100,9 @@ export const Plays = () => {
           onClick={() => onClick("drawPlay")}
           w="7.5rem"
           border="2px"
-          borderColor="white"
+          borderColor={() => conditionalColor("white", "black")}
           color="white"
-          colorScheme="black"
+          colorScheme={conditionalColor("transparent", "blackAlpha")}
         >
           EMPATADAS
         </Button>
@@ -108,13 +110,14 @@ export const Plays = () => {
           onClick={() => onClick("lessDraw")}
           w="7.5rem"
           border="2px"
+          borderColor={() => conditionalColor("white", "black")}
           color="white"
-          colorScheme="black"
+          colorScheme={conditionalColor("transparent", "blackAlpha")}
         >
           {draw}
         </Button>
       </Stack>
-      <Divider backgroundColor="white" />
+      <Divider />
     </Box>
   );
 };

@@ -1,13 +1,9 @@
 import { Box, Text, Heading, Button, Stack } from "@chakra-ui/react";
+import { conditionalColor } from "../../utils";
 
 import "./index.scss";
 
-export const Energy = ({ energy, round, onClick, toggleTheme }) => {
-  //conditional to change color words
-  const conditionalColor = (colorDark, colorWhite) => {
-    return toggleTheme ? colorDark : colorWhite;
-  };
-
+export const Energy = ({ energy, round, onClick, conditionalColor }) => {
   return (
     <Box className="containerCountEnergy">
       <Heading size="md" color={() => conditionalColor("white", "black")}>
@@ -49,6 +45,7 @@ export const Energy = ({ energy, round, onClick, toggleTheme }) => {
           onClick={() => onClick("lessEnergy")}
           w="7.5rem"
           border="2px"
+          letterSpacing={1}
           color={() => conditionalColor("white", "black")}
           colorScheme={conditionalColor("transparent", "red")}
         >
@@ -58,6 +55,7 @@ export const Energy = ({ energy, round, onClick, toggleTheme }) => {
           onClick={() => onClick("moreEnergy")}
           w="7.5rem"
           border="2px"
+          letterSpacing={1}
           color={() => conditionalColor("white", "black")}
           colorScheme={conditionalColor("transparent", "green")}
         >
@@ -67,15 +65,17 @@ export const Energy = ({ energy, round, onClick, toggleTheme }) => {
       <Stack direction="row" spacing={4} align="center">
         <Button
           onClick={() => onClick("updateCards")}
-          w="7.5rem"
+          w="16rem"
           border="2px"
-          fontSize="13px"
+          fontSize="15px"
+          letterSpacing={2}
+          borderColor={() => conditionalColor("white", "black")}
           color={() => conditionalColor("white", "black")}
-          colorScheme={conditionalColor("transparet", "yellow")}
+          colorScheme={conditionalColor("transparent", "yellow")}
         >
           SIGUIENTE RONDA
         </Button>
-        <Button
+        {/* <Button
           onClick={() => onClick("rest")}
           w="7.5rem"
           border="2px"
@@ -83,14 +83,16 @@ export const Energy = ({ energy, round, onClick, toggleTheme }) => {
           colorScheme={conditionalColor("black", "orange")}
         >
           RESET
-        </Button>
+        </Button> */}
       </Stack>
       <Button
         onClick={() => onClick("new")}
         w="16rem"
         marginTop={2}
+        letterSpacing={2}
         border="2px"
-        color={() => conditionalColor("white", "black")}
+        borderColor={() => conditionalColor("white", "black")}
+        color="white"
         colorScheme={conditionalColor("transparent", "blackAlpha")}
       >
         NUEVA PARTIDA
